@@ -5,7 +5,7 @@ export const store = reactive({
 
     catalogue : [],
 
-    APIgeneral:'https://api.themoviedb.org/3/search/movie',
+    APIgeneral:'https://api.themoviedb.org/3/search/multi',
     
     APIkey: '?api_key=361c534a68c8b376ad1269bfb22f2ad7',
 
