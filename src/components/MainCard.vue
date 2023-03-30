@@ -14,7 +14,7 @@ export default {
     image: String,
     title: String,
     original: String,
-    overview:String,
+    language:String,
 
   }
 }
@@ -29,8 +29,8 @@ export default {
       <div class="info">
           <span><strong>Titolo:</strong>{{ title }}</span>
           <span><strong>Titolo Originale:</strong>{{ original }}</span>
+          <span><strong>Lingua:</strong> {{ language }}</span>
           <span><strong>Voto:</strong>stelle</span>
-          <span><strong>Overview:</strong> {{ overview }}</span>
       </div>
 
   </div>
@@ -57,7 +57,7 @@ export default {
         background-color: black;
         padding: 10px 5px;
         overflow: hidden;
-        font-size: 0.8em;
+        
 
         position: absolute;
         top: 0;

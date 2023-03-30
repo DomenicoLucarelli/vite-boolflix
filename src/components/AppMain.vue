@@ -18,7 +18,7 @@ export default {
 <template>
     <div class="container">
         
-        <MainCard v-for="(element, index) in store.catalogue" :key="index" :image="element.poster_path" :title="element.title" :original="element.original_title" :overview="element.overview"></MainCard>
+        <MainCard v-for="(element, index) in store.catalogue" :key="index" :image="element.poster_path" :title="element.title" :original="element.original_title" :language="element.original_language"></MainCard>
 
     </div>
 </template>
