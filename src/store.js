@@ -37,5 +37,7 @@ export const store = reactive({
         }
     ],
 
-    number: null
+    number: null,
+
+    isSearched:false
 })

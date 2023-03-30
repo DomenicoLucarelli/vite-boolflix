@@ -27,6 +27,8 @@ export default {
    methods: {
     filter(){
 
+      store.isSearched = true
+
       if(this.store.userSearch != ''){
 
         let newAPI = this.store.APIgeneral + this.store.APIkey + this.store.APIquery + this.store.userSearch
@@ -43,6 +45,8 @@ export default {
 
         
         this.store.catalogue = res.data.results
+
+        store.isSearched = false
 
       })
       }

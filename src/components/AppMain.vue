@@ -62,7 +62,7 @@ export default {
 
 <template>
     <div class="container">
-        <h2>Trending</h2>
+        <h2>{{ store.isSearched == true ? 'Your Search' : 'Trendings' }}</h2>
         <div class="cards-container" :style="isClick == true ? {flexWrap:'wrap'} : {flexWrap:'nowrap'}">
             <MainCard v-for="(element, index) in store.catalogue" :key="index" @isOver="howMany(element)" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="image(element) "></MainCard>
             
