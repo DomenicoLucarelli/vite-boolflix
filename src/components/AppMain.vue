@@ -11,14 +11,16 @@ export default {
             store,
         };
     },
-    components: { MainCard }
+    components: { MainCard },
+
+  
 }
 </script>
 
 <template>
     <div class="container">
         
-        <MainCard v-for="(element, index) in store.catalogue" :key="index" :image="element.poster_path" :title="element.title" :original="element.original_title" :language="element.original_language"></MainCard>
+        <MainCard v-for="(element, index) in store.catalogue" :key="index" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="element.original_language"></MainCard>
 
     </div>
 </template>
