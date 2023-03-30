@@ -4,11 +4,14 @@ import MainCard from './MainCard.vue';
 import {store} from '../store.js'
 
 
+
 export default {
     name: "AppMain",
     data() {
         return {
             store,
+
+            isClick: false
         };
     },
     components: { MainCard },
@@ -32,10 +35,25 @@ export default {
          }else{
             this.store.number == 5
          }
+        },
 
-         console.log(this.store.number)
+        image(element){
+           if(element.original_language == 'en'){
+               return 'gb'
+           }else if(element.original_language == 'ja'){
+               return 'jp'
+           }else if(element.original_language == 'zh'){
+            return 'cn'
+           }else{
+               return element.original_language
+           }
 
-        }
+        },
+
+        dropDown(){
+            this.isClick = !this.isClick
+        },
+
     },
 
   
@@ -44,9 +62,12 @@ export default {
 
 <template>
     <div class="container">
-        
-        <MainCard v-for="(element, index) in store.catalogue" :key="index" @isOver="howMany(element)" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="element.original_language"></MainCard>
-
+        <h2>Trending</h2>
+        <div class="cards-container" :style="isClick == true ? {flexWrap:'wrap'} : {flexWrap:'nowrap'}">
+            <MainCard v-for="(element, index) in store.catalogue" :key="index" @isOver="howMany(element)" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="image(element) "></MainCard>
+            
+        </div>
+        <div class="button" @click="dropDown()">drop</div>
     </div>
 </template>
 
@@ -57,9 +78,30 @@ export default {
     padding: 30px 0;
 
     display: flex;
-    gap: 10px;
+    flex-direction: column;
 
-    overflow-x: auto;
+    position: relative;
+
+    .cards-container{
+        display: flex;
+        gap: 10px;
+
+        overflow-x: hidden;
+    }
+
+    .button{
+        position: absolute;
+        top: 200px;
+        right: -62px;
+
+        text-transform: uppercase;
+        background-color: rgba(44, 43, 43, 0.897);
+        font-size: .8em;
+        font-weight: bold;
+        padding: 10px;
+        border-radius: 16px;
+        cursor: pointer;
+    }
 
 }
 

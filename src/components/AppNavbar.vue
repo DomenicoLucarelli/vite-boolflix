@@ -10,6 +10,8 @@ export default {
     return {
       
         store,
+
+        links : [ 'Home', 'Serie Tv', 'Film', 'Originali', 'Aggiunti di recente', 'La mia lista']
     }
   },
 }
@@ -19,12 +21,15 @@ export default {
   <nav>
     <div class="container">
 
-        <div class="title">
-            Boolflix
+        <div class="left-section">
+           <img src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg" alt="">
+            <ul>
+            <li v-for="(link, index) in links" :key="index">{{ link }}</li>
+            </ul>        
         </div>
 
         <div class="search-bar">
-            <input v-model="store.userSearch" type="text" @keyup="$emit('search')">
+            <input v-model="store.userSearch" type="text" @keyup.enter="$emit('search')">
             <button @click="$emit('search')">Cerca</button>
         </div>
 
@@ -47,12 +52,25 @@ nav{
         width: 90%;
         margin: 0 auto;
 
-        .title{
-            color: red;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-transform: uppercase;
+        .left-section{
+            height: 100%;
+            display: flex;
+            gap: 10px;
+
+            img{
+
+                width: 100px;
+            }
+
+            ul{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                list-style-type: none;
+            }
         }
+        
 
         .search-bar{
             display: flex;

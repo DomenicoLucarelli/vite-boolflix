@@ -33,13 +33,13 @@ export default {
 
         axios.get(newAPI).then((res)=>{
 
-          console.log(res.data.results)
+          
           this.store.catalogue = res.data.results
 
         })
 
       }else{
-        axios.get(this.store.APIpopular + this.store.APIkey).then((res)=>{
+        axios.get(this.store.APItrending + this.store.APIkey).then((res)=>{
 
         
         this.store.catalogue = res.data.results

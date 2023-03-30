@@ -1,5 +1,7 @@
 <script>
 import {store} from '../store.js'
+
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 export default {
 
     name:'MainCard',
@@ -31,7 +33,7 @@ export default {
       <div class="info">
           <span><strong>Titolo:</strong>{{ title }}</span>
           <span><strong>Titolo Originale:</strong>{{ original }}</span>
-          <span><strong>Lingua:</strong> {{ language }}</span>
+          <span><strong>Lingua:</strong> <span :class="'fi fi-' + language"></span></span>
           <span><strong>Voto:</strong><i class="fas fa-star" v-for="(item, index) in store.stars" :style="item.vote.includes(store.number) ? {color: 'yellow'} : '' "></i></span>
       </div>
 
