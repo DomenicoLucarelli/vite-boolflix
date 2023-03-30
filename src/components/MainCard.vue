@@ -1,4 +1,5 @@
 <script>
+import {store} from '../store.js'
 export default {
 
     name:'MainCard',
@@ -6,6 +7,7 @@ export default {
   data() {
     return {
       
+        store,
     }
   },
 
@@ -21,7 +23,7 @@ export default {
 </script>
 
 <template>
-  <div class="card" scoped>
+  <div class="card" @mouseover="$emit('isOver')">
     
       
       <img :src=" `https://image.tmdb.org/t/p/w200${image}` " alt="">
@@ -30,13 +32,13 @@ export default {
           <span><strong>Titolo:</strong>{{ title }}</span>
           <span><strong>Titolo Originale:</strong>{{ original }}</span>
           <span><strong>Lingua:</strong> {{ language }}</span>
-          <span><strong>Voto:</strong>stelle</span>
+          <span><strong>Voto:</strong><i class="fas fa-star" v-for="(item, index) in store.stars" :style="item.vote.includes(store.number) ? {color: 'yellow'} : '' "></i></span>
       </div>
 
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss" scoped >
   .card{
     position: relative;
 
@@ -66,6 +68,11 @@ export default {
         flex-direction: column;
       }
 
+  }
+
+  .fa-star{
+    color: grey;
+    font-size: 18px;
   }
 
 </style>

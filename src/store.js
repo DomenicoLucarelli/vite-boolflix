@@ -14,4 +14,28 @@ export const store = reactive({
     APItrending:'https://api.themoviedb.org/3/trending/all/week',
 
     userSearch:'',
+
+    stars :[
+        {
+            vote: [1,2,3,4,5]
+        },
+
+        {
+            vote: [2,3,4,5]
+        },
+
+        {
+            vote: [3,4,5]
+        },
+
+        {
+            vote: [4,5]
+        },
+
+        {
+            vote: [5]
+        }
+    ],
+
+    number: null
 })
