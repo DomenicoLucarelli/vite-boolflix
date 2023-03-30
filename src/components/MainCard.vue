@@ -23,14 +23,15 @@ export default {
 <template>
   <div class="card" scoped>
     
-    <img :src=" `https://image.tmdb.org/t/p/w200${image}` " alt="">
-
-    <div class="info">
-        <span><strong>Titolo:</strong>{{ title }}</span>
-        <span><strong>Titolo Originale:</strong>{{ original }}</span>
-        <span><strong>Voto:</strong>stelle</span>
-        <span><strong>Overview:</strong> {{ overview }}</span>
-    </div>
+      
+      <img :src=" `https://image.tmdb.org/t/p/w200${image}` " alt="">
+      
+      <div class="info">
+          <span><strong>Titolo:</strong>{{ title }}</span>
+          <span><strong>Titolo Originale:</strong>{{ original }}</span>
+          <span><strong>Voto:</strong>stelle</span>
+          <span><strong>Overview:</strong> {{ overview }}</span>
+      </div>
 
   </div>
 </template>
@@ -41,6 +42,10 @@ export default {
 
     &:hover img{
         z-index: 0;
+    }
+
+    &:hover .info{
+        display: flex;
     }
       img{
         position: relative;
@@ -57,7 +62,7 @@ export default {
         position: absolute;
         top: 0;
 
-        display: flex;
+        display: none;
         flex-direction: column;
       }
 
