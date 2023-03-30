@@ -11,7 +11,7 @@ export const store = reactive({
 
     APIquery:'&query=',
 
-    APIpopular:'https://api.themoviedb.org/3/movie/popular',
+    APItrending:'https://api.themoviedb.org/3/trending/all/week',
 
     userSearch:'',
 })

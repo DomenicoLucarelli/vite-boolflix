@@ -16,7 +16,7 @@ export default {
     components: { AppNavbar, AppMain },
 
     created() {
-      axios.get(this.store.APIpopular + this.store.APIkey).then((res)=>{
+      axios.get(this.store.APItrending + this.store.APIkey).then((res)=>{
 
         
         this.store.catalogue = res.data.results
