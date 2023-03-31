@@ -1,9 +1,15 @@
 import {reactive} from 'vue'
 export const store = reactive({
 
-    // istanzio un array vuoto che conterrà l'oggetto dell'API
-
+    
+    
     catalogue : [],
+
+    filmGenres : [],
+
+    tvGenres : [],
+
+    genres : [],
 
     APIgeneral:'https://api.themoviedb.org/3/search/multi',
     
@@ -39,5 +45,9 @@ export const store = reactive({
 
     number: null,
 
-    isSearched:false
+    isSearched:false,
+
+    click : false,
+
+    genreID : ''
 })

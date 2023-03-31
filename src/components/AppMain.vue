@@ -21,7 +21,9 @@ export default {
 
          let num = parseInt(element.vote_average);
 
-         if(num == 1 || num == 2){
+         if(num == 0){
+            this.store.number = 0
+         }else if(num == 1 || num == 2){
             this.store.number = 1
 
          }else if(num == 3 || num == 4){
@@ -54,6 +56,14 @@ export default {
             this.isClick = !this.isClick
         },
 
+        visual(element){
+            if(store.genreID == ''){
+                return element
+            }else{
+                return element.genre_ids.includes(store.genreID)
+            }
+        }
+
     },
 
   
@@ -62,11 +72,15 @@ export default {
 
 <template>
     <div class="container">
+
         <h2>{{ store.isSearched == true ? 'Your Search' : 'Trendings' }}</h2>
+
         <div class="cards-container" :style="isClick == true ? {flexWrap:'wrap'} : {flexWrap:'nowrap'}">
-            <MainCard v-for="(element, index) in store.catalogue" :key="index" @isOver="howMany(element)" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="image(element) "></MainCard>
+
+            <MainCard v-for="(element, index) in store.catalogue" :key="index" @isOver="howMany(element)" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="image(element)" v-show="visual(element)"></MainCard>
             
         </div>
+
         <div class="button" @click="dropDown()">drop</div>
     </div>
 </template>
