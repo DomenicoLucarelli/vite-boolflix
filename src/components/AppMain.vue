@@ -6,16 +6,19 @@ import {store} from '../store.js'
 
 
 export default {
+
     name: "AppMain",
+
     data() {
         return {
             store,
-
+            // variabile che cambia al click di .button
             isClick: false
         };
     },
     components: { MainCard },
 
+    //  funzione che mi trasforma il voto in un numero da 0 a 5
     methods: {
         howMany(element){
 
@@ -38,7 +41,7 @@ export default {
             this.store.number == 5
          }
         },
-
+        // funzione che mi permette di visuallizzare correttamente le bandiere
         image(element){
            if(element.original_language == 'en'){
                return 'gb'
@@ -52,10 +55,11 @@ export default {
 
         },
 
+        // funzione per il toggle di .button
         dropDown(){
             this.isClick = !this.isClick
         },
-
+        // funzione che mi ritorna element se non ci sono filtri sui generi altrimenti mi visualizza solo i film che appartengono a quel genere
         visual(element){
             if(store.genreID == ''){
                 return element

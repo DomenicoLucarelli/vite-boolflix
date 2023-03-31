@@ -14,6 +14,7 @@ export default {
 
 <template>
     <div class="container">
+        
         <div class="film-container">
 
             <span v-for="(genre, index) in store.filmGenres " :key="index" @click="$emit('genre',genre)">{{ genre.name }}</span>

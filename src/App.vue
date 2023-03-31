@@ -26,19 +26,14 @@ export default {
         
       })
 
+      // chiamo API che mi genera un oggetto con tutti i generi
       axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=361c534a68c8b376ad1269bfb22f2ad7').then((res) =>{
 
+        // riempio un array con l'oggetto che mi restituisce l'API
         this.store.filmGenres = res.data.genres
         console.log(this.store.filmGenres)
         
       })
-
-      axios.get('https://api.themoviedb.org/3/genre/tv/list?api_key=361c534a68c8b376ad1269bfb22f2ad7').then((res)=>{
-        
-        this.store.tvGenres = res.data.genres
-        console.log(this.store.tvGenres)
-      })
-
      
     },
 
@@ -48,8 +43,9 @@ export default {
 
       store.isSearched = true
 
+      // se la userSearch è diversa da '' 
       if(this.store.userSearch != ''){
-
+        // compongo il nuov link API e lo chiamo riempiendo poi l'array catalogue
         let newAPI = this.store.APIgeneral + this.store.APIkey + this.store.APIquery + this.store.userSearch
 
         axios.get(newAPI).then((res)=>{
@@ -60,6 +56,7 @@ export default {
         })
 
       }else{
+        // altrimenti lascia l'array catalogue riempito con i trends
         axios.get(this.store.APItrending + this.store.APIkey).then((res)=>{
 
         
@@ -71,6 +68,7 @@ export default {
       }
     },
 
+    // funzione che mi da un valore a store.ID
     getID(genre){
       
       this.store.genreID = genre.id

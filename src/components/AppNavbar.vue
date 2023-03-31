@@ -12,9 +12,7 @@ export default {
       
         store,
 
-        
-
-        links : [ 
+         links : [ 
          'Home',
          'Serie Tv',
          'Film',
@@ -26,13 +24,13 @@ export default {
   },
 
   methods: {
+    // funzione che toggla il click sull'icona filter
     genresFilter(){
         
-        this.store.genres = this.store.filmGenres.concat(this.store.tvGenres)
-        console.log(this.store.genres)
         this.store.click = !this.store.click
     },
 
+    // funzione che rimuove i filtri
     removeFilter(){
         this.store.genreID = ''
     }
@@ -45,17 +43,27 @@ export default {
     <div class="container">
 
         <div class="left-section">
+
            <img src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg" alt="">
+
             <ul>
+
             <li v-for="(link, index) in links" :key="index">{{ link}}</li>
-            </ul>        
+
+            </ul>  
+
         </div>
 
         <div class="search-bar">
+
             <i class="fas fa-filter" @click="genresFilter()"></i>
+
             <strong @click="removeFilter()">x</strong>
+
             <input v-model="store.userSearch" type="text" @keyup.enter="$emit('search')">
+
             <button @click="$emit('search')">Cerca</button>
+
         </div>
 
     </div>
