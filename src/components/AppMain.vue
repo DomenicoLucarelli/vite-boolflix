@@ -12,8 +12,7 @@ export default {
     data() {
         return {
             store,
-            // variabile che cambia al click di .button
-            isClick: false
+            
         };
     },
     components: { MainCard },
@@ -55,13 +54,13 @@ export default {
 
         },
 
-        // funzione per il toggle di .button
+        // funzione per lo scroll a destra
         scrollR(){
             
             let bar = document.querySelector('.cards-container')
             bar.scrollBy(300,0)
         },
-
+        // funzione per lo scroll a sinistra
         scrollL(){
             
             let bar = document.querySelector('.cards-container')
