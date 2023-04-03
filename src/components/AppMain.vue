@@ -2,6 +2,7 @@
 import MainCard from './MainCard.vue';
 
 import {store} from '../store.js'
+import axios from 'axios';
 
 
 
@@ -73,10 +74,21 @@ export default {
             }else{
                 return element.genre_ids.includes(store.genreID)
             }
+        },
+        // funzione che mi popola l'oggettto in store con le info del film/serie cliccato/a
+        takeElement(element){
+           
+            this.store.infObject = element
+            
+            axios.get(`https://api.themoviedb.org/3/movie/${element.id}/credits?api_key=361c534a68c8b376ad1269bfb22f2ad7`).then((res)=>{
+                let array = res.data.cast
+                this.store.filmCast = array.slice(0,5)
+                
+            })
+
+            this.store.isElementClick = true
         }
-
     },
-
   
 }
 </script>
@@ -89,7 +101,7 @@ export default {
 
         <div class="cards-container" >
 
-            <MainCard v-for="(element, index) in store.catalogue" :key="index" @isOver="howMany(element)" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="image(element)" v-show="visual(element)"></MainCard>
+            <MainCard v-for="(element, index) in store.catalogue" :key="index" @click="takeElement(element)" @isOver="howMany(element)" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="image(element)" v-show="visual(element)"></MainCard>
             
         </div>
 

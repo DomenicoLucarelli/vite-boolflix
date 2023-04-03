@@ -5,7 +5,8 @@ import axios from 'axios';
 
 import AppNavbar from './components/AppNavbar.vue';
 import AppMain from './components/AppMain.vue';
-import NavbarFilter from './components/NavbarFilter.vue'
+import NavbarFilter from './components/NavbarFilter.vue';
+import AppInfo from './components/AppInfo.vue'
 
 
 export default {
@@ -15,7 +16,7 @@ export default {
         };
     },
 
-    components: { AppNavbar, AppMain, NavbarFilter,},
+    components: { AppNavbar, AppMain, NavbarFilter,AppInfo,},
 
     created() {
       // chiamata API che genera un oggetto di trending film
@@ -84,6 +85,7 @@ export default {
   <AppNavbar @search="filter()"></AppNavbar>
   <NavbarFilter :style="store.click == true ? {display: 'flex'} : {display: 'none'}" @genre="getID"></NavbarFilter>
   <AppMain></AppMain>
+  <AppInfo></AppInfo>
   
 </template>
 

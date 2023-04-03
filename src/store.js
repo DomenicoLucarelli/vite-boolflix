@@ -45,5 +45,13 @@ export const store = reactive({
     // variabile booleana che cambia al click sull'icona filter
     click : false,
     // variabile che contiene l'id del genere del film cliccato
-    genreID : ''
+    genreID : '',
+    // oggetto che verrà popolato al click di un film/serie
+    infObject : [],
+
+    isElementClick : false,
+
+    filmCast: [],
+
+    
 })
