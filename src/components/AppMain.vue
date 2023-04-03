@@ -79,12 +79,21 @@ export default {
         takeElement(element){
            
             this.store.infObject = element
-            
-            axios.get(`https://api.themoviedb.org/3/movie/${element.id}/credits?api_key=361c534a68c8b376ad1269bfb22f2ad7`).then((res)=>{
-                let array = res.data.cast
-                this.store.filmCast = array.slice(0,5)
-                
-            })
+            console.log(element)
+            if(element.media_type == 'movie'){
+
+                axios.get(`https://api.themoviedb.org/3/movie/${element.id}/credits?api_key=361c534a68c8b376ad1269bfb22f2ad7`).then((res)=>{
+                    let array = res.data.cast
+                    this.store.filmCast = array.slice(0,5)
+                    
+                })
+            }else{
+                axios.get(`https://api.themoviedb.org/3/tv/${element.id}/credits?api_key=361c534a68c8b376ad1269bfb22f2ad7`).then((res)=>{
+                    let array = res.data.cast
+                    this.store.filmCast = array.slice(0,5)
+                    
+                })
+            }
 
             this.store.isElementClick = true
         }
