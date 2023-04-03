@@ -56,8 +56,16 @@ export default {
         },
 
         // funzione per il toggle di .button
-        dropDown(){
-            this.isClick = !this.isClick
+        scrollR(){
+            
+            let bar = document.querySelector('.cards-container')
+            bar.scrollBy(300,0)
+        },
+
+        scrollL(){
+            
+            let bar = document.querySelector('.cards-container')
+            bar.scrollBy(-300,0)
         },
         // funzione che mi ritorna element se non ci sono filtri sui generi altrimenti mi visualizza solo i film che appartengono a quel genere
         visual(element){
@@ -78,14 +86,16 @@ export default {
     <div class="container">
 
         <h2>{{ store.isSearched == true ? 'Your Search' : 'Trendings' }}</h2>
+        <div class="button btn1" @click="scrollL()"> <i class="fas fa-chevron-left"></i> </div>
 
-        <div class="cards-container" :style="isClick == true ? {flexWrap:'wrap'} : {flexWrap:'nowrap'}">
+        <div class="cards-container" >
 
             <MainCard v-for="(element, index) in store.catalogue" :key="index" @isOver="howMany(element)" :image="element.poster_path" :title="element.media_type == 'movie' ? element.title : element.name" :original="element.media_type == 'movie' ? element.original_title : element.original_name" :language="image(element)" v-show="visual(element)"></MainCard>
             
         </div>
 
-        <div class="button" @click="dropDown()">drop</div>
+        <div class="button btn2" @click="scrollR()"> <i class="fas fa-chevron-right"></i></div>
+
     </div>
 </template>
 
@@ -105,13 +115,13 @@ export default {
         gap: 10px;
 
         overflow-x: hidden;
+        scroll-behavior: smooth;
     }
 
     .button{
         position: absolute;
         top: 200px;
-        right: -62px;
-
+        
         text-transform: uppercase;
         background-color: rgba(44, 43, 43, 0.897);
         font-size: .8em;
@@ -119,6 +129,13 @@ export default {
         padding: 10px;
         border-radius: 16px;
         cursor: pointer;
+    }
+
+    .btn1{
+        left: -45px;
+    }
+    .btn2{
+        right: -62px;
     }
 
 }
