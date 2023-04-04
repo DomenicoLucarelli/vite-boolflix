@@ -24,9 +24,9 @@ export default {
 
             <div class="info">
 
-                <span><strong>Titolo:</strong> {{ store.infObject.title }}</span>
+                <span><strong>Titolo:</strong> {{ store.infObject.media_type == 'movie' ? store.infObject.title : store.infObject.name}}</span>
 
-                <span><strong>Data di rilascio:</strong> {{ store.infObject.release_date}}</span>
+                <span><strong>Data di rilascio:</strong> {{ store.infObject.media_type == 'movie' ? store.infObject.release_date : store.infObject.first_air_date }}</span>
 
                 <span><strong>Voto:</strong> {{ store.infObject.vote_average}}</span>
 
